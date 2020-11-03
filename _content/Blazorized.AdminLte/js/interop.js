@@ -20,7 +20,7 @@ function pushMenu() {
     $('[data-toggle="push-menu"]').pushMenu('toggle')
 }
 
-function toggle() {
+function toggle(el) {
     $(el).toggle();
 }
 
@@ -54,4 +54,23 @@ function dateRangePicker(dotnetRef, el, range, locale, settings) {
 
 function setTitle(title) {
     document.title = title;
+}
+
+function overlay(isActive) {
+    if (isActive) {
+        $("body").css("overflow-y", "hidden");
+    }
+    else {
+        $("body").css("overflow-y", "auto");
+    }
+}
+
+function sideBarFixed(isFixed)
+{
+    if (isFixed) {
+        $("body").addClass("layout-fixed");
+        $("body").trigger("resize");
+    }
+    else
+        $("body").removeClass("layout-fixed");
 }
