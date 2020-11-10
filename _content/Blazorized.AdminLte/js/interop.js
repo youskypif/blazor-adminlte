@@ -1,4 +1,8 @@
-﻿function toggleMenu(el) {
+﻿
+
+var prevMenu = null;
+
+function toggleMenu(el) {
     $(el).next().slideToggle('fast');
 }
 
@@ -8,8 +12,24 @@ function hideMenu(el) {
 
 function toggleSideMenu(el) {
     $(el).slideToggle('fast');
-    
+   }
+
+var prevActiveMenu = null;
+
+function activateSideMenu(el) {
+    if (el == prevActiveMenu)
+        return;
+     $(prevActiveMenu).removeClass("active");
+     $(el).addClass("active");
+     prevActiveMenu = el;
 }
+
+
+function deactivateSideMenu() {
+    $('aside').find("li").each(function () { $(this).find("a").removeClass("active") });
+}
+
+
 
 function addClass(el, _class) {
     $(el).addClass(_class);
@@ -73,4 +93,22 @@ function sideBarFixed(isFixed)
     }
     else
         $("body").removeClass("layout-fixed");
+}
+
+function navBarFixed(isFixed) {
+    if (isFixed) {
+        $("body").addClass("layout-navbar-fixed");
+        $("body").trigger("resize");
+    }
+    else
+        $("body").removeClass("layout-navbar-fixed");
+}
+
+function footerFixed(isFixed) {
+    if (isFixed) {
+        $("body").addClass("layout-footer-fixed");
+        $("body").trigger("resize");
+    }
+    else
+        $("body").removeClass("layout-footer-fixed");
 }
