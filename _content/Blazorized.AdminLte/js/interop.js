@@ -29,11 +29,14 @@ function deactivateSideMenu() {
     $('aside').find("li").each(function () { $(this).find("a").removeClass("active") });
 }
 
-
+function toggleAside() {
+    if ($("body").hasClass("sidebar-open")) {
+        $('#sidebar-overlay').click();
+    };
+}
 
 function addClass(el, _class) {
     $(el).addClass(_class);
-  //  $(el).collapse();
 }
 
 function pushMenu() {
